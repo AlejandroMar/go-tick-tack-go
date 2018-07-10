@@ -3,6 +3,7 @@
 }
 
 .app-header{
+    color:rgb(57, 57, 116);
     margin-top: 70px;
     text-align: center;
 }
@@ -38,7 +39,7 @@
 
 .btn-reset{
     
-    background-color: rgb(175, 76, 76); /* Green */
+    background-color:  rgb(175, 76, 76); /* Green */
     border: none;
     color: white;
     padding: 20px;

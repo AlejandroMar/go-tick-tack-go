@@ -72,16 +72,17 @@ function listen(gridArray) {
             checkTie(boxes);
             if (win) {
                 setTimeout(function () { alert(`${turn} has won`); }, 200);
-                setTimeout(function () { 
+                setTimeout(function () {
                     reset();
-                    startGame(); 
-                    }, 400);
+                    startGame();
+                }, 400);
             }
             else if (tie) {
                 setTimeout(function () { alert(`it is a tie`); }, 200);
-                setTimeout(function () { reset();
-                startGame(); 
-            }, 400);
+                setTimeout(function () {
+                    reset();
+                    startGame();
+                }, 400);
             }
         });
 
@@ -99,7 +100,7 @@ function mark(e) {
     moves++
     turn = moves % 2 !== 0 ? player1 : player2;
     currentBox.textContent = turn;
-    /* console.log(currentBox);  */
+
 }
 
 
