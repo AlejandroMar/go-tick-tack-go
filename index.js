@@ -12,6 +12,14 @@ let player2 = 'O';
 let win = false;
 let tie = false;
 
+//modal vars
+let modal = document.getElementById('myModal');
+let span = document.querySelector(".close");
+let playAgainBtn = document.querySelector('.play-again');
+let stopPlayingBtn = document.querySelector('.stop-playing');
+let modalHeader = document.getElementById('modal-header');
+
+
 
 
 
@@ -71,18 +79,21 @@ function listen(gridArray) {
             checkWin(boxes);
             checkTie(boxes);
             if (win) {
-                setTimeout(function () { alert(`${turn} has won`); }, 200);
-                setTimeout(function () {
-                    reset();
-                    startGame();
-                }, 400);
+                modalHeader.innerText = `${turn} You win!`
+                setTimeout(() => {
+                    modal.style.display = "block";
+                }, 300);
+                
+                playAgain();
+                stopPlaying()
             }
             else if (tie) {
-                setTimeout(function () { alert(`it is a tie`); }, 200);
+                modalHeader.innerText = 'It\'s a Tie!' 
                 setTimeout(function () {
-                    reset();
-                    startGame();
-                }, 400);
+                    modal.style.display = "block";
+                }, 300);
+                stopPlaying();
+                playAgain();
             }
         });
 
@@ -191,6 +202,40 @@ function checkTie(array) {
         tie = true;
     }
 }
+
+
+//modal js
+// When the user clicks on <span> (x), close the modal
+
+span.onclick = function () {
+    modal.style.display = "none";
+}
+
+function playAgain() {
+    return playAgainBtn.addEventListener('click', () => {
+        modal.style.display = "none";
+        setTimeout(() => {
+            reset();
+            startGame();
+        }, 500)
+    });
+}
+
+function stopPlaying() {
+    return stopPlayingBtn.addEventListener('click', () => {
+        win = false;
+        if(document.querySelector('h3')){
+            debugger;
+            board.removeChild(document.querySelector('h3'));
+        }
+        modal.style.display = "none";
+        let msg = document.createElement('h3');
+        msg.classList.add('msg')
+        msg.innerText = 'Thanks for playing'
+        board.appendChild(msg);
+    });
+}
+
 
 
 
