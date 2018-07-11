@@ -8,6 +8,7 @@ let btnReset = document.querySelector('.btn-reset');
 let moves = 0;
 let turn;
 let player1 = 'X';
+
 let player2 = 'O';
 let win = false;
 let tie = false;
@@ -96,7 +97,6 @@ function listen(gridArray) {
                 playAgain();
             }
         });
-
     };
 
 }
